@@ -7,3 +7,5 @@ pub fn description(){
     println!("Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer.");
 }
 
+
+

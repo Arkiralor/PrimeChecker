@@ -13,6 +13,8 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
     let mut flag: bool = true; //Default state of the flag: true-> isPrime; false-> notPrime.
 
     let mut factors: Vec<u64> = Vec::new(); //Initialize an empty list of factors.
+    let mut anti_prime_check:bool=false;
+    let mut anti_prime_vector:Vec<u64>=Vec::new();
 
     // If the given number is a known prime number as defined in crate::constants::KNOWN_PRIMES,
     // skip testing it and directly return (false, [1, num])
@@ -41,6 +43,9 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
         factors.sort();
         // println!("Factors of {num}: {factors:?}", num=num, factors=factors);
     } else if factors.len() > 0 {
+
+        (anti_prime_check, anti_prime_vector) = check_if_anti_prime(num);
+
         let mut new_factors: Vec<u64> = Vec::new();
 
         // Construct a new vector with 1 and num as the first and last elements respectively.
@@ -70,8 +75,13 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
     let mut factors: Vec<u64> = Vec::new();
 
     if num == 0 || num == 1 || num == 2{
+        factors.push(num);
+        if num > 1{
+            factors.push(1);
+            factors.sort();
+        }
         println!("While {} is TECHNICALLY an anti-prime number, it is also a prime number due to a special case.", num);
-        return (false, factors);
+        return (true, factors);
     }
 
     // Check to see if this number is a prime number or not.
@@ -101,8 +111,37 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
         return (true, factors);
     }
     else {
-        println!("{} is not an ANTI-PRIME number as {:?} have a higher or equal number of factors than it.", num, previous_highers);
-        return (false, previous_highers);
+        println!("{} is not an ANTI-PRIME number as there are numbers with a higher or equal number of factors than it.", num);
+        return (false, factors);
     }
 
+}
+
+pub fn find_primes_till(num:u64)->Vec<u64>{
+    //! Finds all the prime numbers till a given number.
+
+    let mut prime_numbers: Vec<u64> = Vec::new();
+    for item in constants::KNOWN_PRIMES {
+        if item <= num {
+            prime_numbers.push(item);
+        }
+    }
+    //// Debugging code; comment out for prod.
+    // println!("{:?} are commonly known prime numbers; skipping checking them individually...", prime_numbers);
+
+    let start: u64 = 3;
+
+    let mut result: bool;
+    let mut _factors: Vec<u64> = Vec::new();
+
+    for item in start..num + 1 {
+        (result, _factors) = check_if_prime(item);
+
+        if result == true {
+            prime_numbers.push(item);
+        }
+    }
+    prime_numbers = utils::unique_elements_vector(prime_numbers);
+    prime_numbers.sort();
+    return prime_numbers;
 }

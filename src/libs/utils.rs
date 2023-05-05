@@ -1,11 +1,7 @@
 //! General purpose utility functions.
 
 
-pub fn unique_elements_vector<
-    T: std::ops::Add<Output = T> + std::fmt::Debug + std::cmp::PartialEq,
->(
-    _list: Vec<T>,
-) -> Vec<T> {
+pub fn unique_elements_vector<T: std::ops::Add<Output = T> + std::fmt::Debug + std::cmp::PartialEq>(_list: Vec<T>) -> Vec<T> {
     //! Find all the UNIQUE elements in a given vector of Datatype T*
     //      * where T has the following attributes:
     //          Add()
@@ -16,7 +12,7 @@ pub fn unique_elements_vector<
     //      _list: Vec<T>
 
     //  Returns:
-    //      Vec<T>n
+    //      Vec<T>
     let mut unique_list: Vec<T> = Vec::new();
     for item in _list {
         if !unique_list.contains(&item) {

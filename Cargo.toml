@@ -6,10 +6,10 @@ rust-version = "1.69.0"
 authors = [
     "Arkiralor <prithoo11335@gmail.com>"
 ]
-description = "A simple codebase to learn Rust."
+description = "Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer."
 readme = "README.md"
 license-file = "LICENSE.md"
-keywords = ["learning", "tutorial", "prime-numbers"]
+keywords = ["library", "sample", "prime-numbers"]
 publish = false
 
 
