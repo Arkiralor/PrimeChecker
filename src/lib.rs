@@ -2,9 +2,14 @@
 
 mod libs;
 
-pub fn description(){
-    //! Prints a description of the crate.
-    println!("Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer.");
+pub fn description(show:bool)->String{
+    //! Prints a description of the crate to the console and returns the same.
+    let description_str = String::from(libs::constants::DESCRIPTION);
+    if show==true{
+        println!("{}", description_str);
+        return description_str;
+    }    
+    return description_str;
 }
 
 pub fn check_if_prime(num:u64)->(bool, Vec<u64>){
