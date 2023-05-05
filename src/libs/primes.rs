@@ -101,11 +101,13 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
     //// Debugging code; comment out for prod.
     // println!("Lower numbers with a higher or equal number of factors:\t{:?}", previous_highers);
     if previous_highers.len() == 0{
-        println!("{} is not just a composite number, it is an ANTI-PRIME number.", num);
+        //// Debugging code; comment out for prod. 
+        // println!("{} is not just a composite number, it is an ANTI-PRIME number.", num);
         return (true, factors);
     }
     else {
-        println!("{} is not an ANTI-PRIME number as there are numbers with a higher or equal number of factors than it.", num);
+        //// Debugging code; comment out for prod. 
+        // println!("{} is not an ANTI-PRIME number as there are numbers with a higher or equal number of factors than it.", num);
         return (false, factors);
     }
 
