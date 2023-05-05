@@ -16,4 +16,4 @@ _To be constructed..._
 
 ## Credits
 
-(c) 2023, [Prithoo Medhi](mailto:prithoo11335@gmail.com) and [Arkiralor](https://www.github.com/Arkiralor)
+(ɔ) 2023 [Arkiralor](https://www.github.com/Arkiralor) ([Prithoo Medhi](mailto:prithoo11335@gmail.com))

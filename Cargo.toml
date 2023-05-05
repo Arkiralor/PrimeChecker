@@ -7,6 +7,7 @@ authors = [
     "Arkiralor <prithoo11335@gmail.com>"
 ]
 description = "Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer."
+repository = "https://github.com/Arkiralor/PrimeChecker/"
 readme = "README.md"
 license-file = "LICENSE.md"
 keywords = ["library", "sample", "prime-numbers"]
