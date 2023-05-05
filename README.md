@@ -4,12 +4,13 @@ A sample rust package to check the prime-ness of a given unsigned, 64-bit intege
 
 ## Description
 
+_Do note that wherever we use square brackets in this section, we are using the mathematical expression for an inclusive boundary._
+
 Any whole number (or natural number, depending on who you ask) `num`, can have one of the following three prime-ness values:
 
 1. __Prime:__ The list of its factors is exactly `[1, num]`.
 2. __Composite:__ The list of its factors is `[1, [z (- Z], num]` where `z` can be any natural number exclusively between `1` and `num`.
 3. __Anti-Prime:__ The list of its factors is the same as a composite number _(except in special cases, such as `1`, `2`)_ but the length of the list is the greatest for the set [`num-z`, `num`] _i.e, it exclusively has the highest number of factors for any natural number less than it_.
-   - Do note that wherever we use square brackets in this section, we are using the mathematical expression for an inclusive boundary.
 
 The library here holds functions that help determine and select unsigned, 64-bit integers depending on these three criteria.
 
