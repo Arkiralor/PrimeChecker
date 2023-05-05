@@ -36,5 +36,6 @@ pub fn find_primes_till(num:u64)->Vec<u64>{
     return prime_numbers;
 }
 
-
+#[cfg(test)]
+mod tests;
 
