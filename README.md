@@ -70,16 +70,16 @@ As this entire package is a cargo crate, you can generate the documentation usin
 
 3. `description()`
 
-    - _Prints a brief description of this library crate to the console._
-    - __Arguments:__ `NULL`
-    - __Returns:__ `NULL`
+    - _Returns a brief description of this library crate and if `show` is set to `true`, prints the same to the console._
+    - __Arguments:__ `show: bool`
+    - __Returns:__ `String`
     - __Usage:__
 
         ```rs
         use prime_checker;
 
         fn main(){
-            prime_checker::description();
+            let desc_str = prime_checker::description(true);
         }
         ```
 

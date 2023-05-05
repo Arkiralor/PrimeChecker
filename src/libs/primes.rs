@@ -74,14 +74,16 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
             factors.push(1);
             factors.sort();
         }
-        println!("While {} is TECHNICALLY an anti-prime number, it is also a prime number due to a special case.", num);
+        //// Debugging code; comment out for prod.
+        // println!("While {} is TECHNICALLY an anti-prime number, it is also a prime number due to a special case.", num);
         return (true, factors);
     }
 
     // Check to see if this number is a prime number or not.
     (prime_check, factors) = check_if_prime(num);
     if prime_check==true{
-        println!("{} is a COMPOSITE number.", num);
+        //// Debugging code; comment out for prod.
+        // println!("{} is a COMPOSITE number.", num);
         return (false, factors);
     }
 

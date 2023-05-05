@@ -7,7 +7,6 @@ pub fn description(show:bool)->String{
     let description_str = String::from(libs::constants::DESCRIPTION);
     if show==true{
         println!("{}", description_str);
-        return description_str;
     }    
     return description_str;
 }
