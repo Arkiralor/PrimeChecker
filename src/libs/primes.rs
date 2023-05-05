@@ -13,8 +13,6 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
     let mut flag: bool = true; //Default state of the flag: true-> isPrime; false-> notPrime.
 
     let mut factors: Vec<u64> = Vec::new(); //Initialize an empty list of factors.
-    // let mut anti_prime_check:bool=false;
-    // let mut anti_prime_vector:Vec<u64>=Vec::new();
 
     // If the given number is a known prime number as defined in crate::constants::KNOWN_PRIMES,
     // skip testing it and directly return (false, [1, num])
@@ -38,13 +36,9 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
         factors.push(1);
         factors.push(num);
 
-        // To handle a unique case with 1.
         factors = utils::unique_elements_vector(factors);
         factors.sort();
-        // println!("Factors of {num}: {factors:?}", num=num, factors=factors);
     } else if factors.len() > 0 {
-
-        // (anti_prime_check, anti_prime_vector) = check_if_anti_prime(num);
 
         let mut new_factors: Vec<u64> = Vec::new();
 
