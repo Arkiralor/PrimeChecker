@@ -1,14 +1,9 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+//! Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer.
+
+mod libs;
+
+pub fn description(){
+    //! Prints a description of the crate.
+    println!("Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer.");
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}

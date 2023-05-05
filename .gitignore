@@ -1,2 +1,8 @@
+## Editor Files
+.vscode/
+VSCode/
+vscode/
+
+## Cargo Files
 /target
 /Cargo.lock
