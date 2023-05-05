@@ -1,0 +1,2 @@
+rustup --version
+cargo --version
