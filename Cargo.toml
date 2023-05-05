@@ -1,0 +1,18 @@
+[package]
+name = "prime-checker"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.69.0"
+authors = [
+    "Arkiralor <prithoo11335@gmail.com>"
+]
+description = "A simple codebase to learn Rust."
+readme = "README.md"
+license-file = "LICENSE.md"
+keywords = ["learning", "tutorial", "prime-numbers"]
+publish = false
+
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
