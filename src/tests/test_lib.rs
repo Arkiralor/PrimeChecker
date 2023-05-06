@@ -3,6 +3,7 @@
 use crate::check_if_prime;
 use crate::check_if_anti_prime;
 use crate::find_primes_till;
+use crate::find_anti_primes_till;
 
 use crate::libs::constants;
 
@@ -76,4 +77,31 @@ pub fn test_check_if_anti_prime_2(){
     let (check, factors) = check_if_anti_prime(num);
     assert_eq!(check, true);
     assert_eq!(factors, vec![1,2,3,4,6,12]);
+}
+
+#[test]
+pub fn test_find_anti_primes_till(){
+    //! Tests the find_anti_primes_till function.
+    // As the `KNOWN_ANTIPRIMES` constant is defined in `src\libs\constants.rs` to contain all known anti-prime numbers until 10_080, we can use it to test the `find_anti_primes_till` function.
+    let num: u64 = 10_080;
+    let anti_primes = find_anti_primes_till(num);
+    assert_eq!(anti_primes, constants::KNOWN_ANTIPRIMES);
+}
+
+#[test]
+pub fn test_find_anti_primes_till_2(){
+    //! Tests the find_anti_primes_till function with a non-anti-prime number, 16.
+    let num: u64 = 16;
+    let anti_primes = find_anti_primes_till(num);
+    assert_eq!(anti_primes, vec![1,2,4,6,12]);
+}
+
+// prithoo: This test passes, but takes 7 minutes or so to run. So, it is ignored.
+#[ignore]
+#[test]
+pub fn test_find_anti_primes_till_3(){
+    //! Tests the find_anti_primes_till function with a non-anti-prime number, 16'240.
+    let num: u64 = 16_240;
+    let anti_primes = find_anti_primes_till(num);
+    assert_eq!(anti_primes, vec![1, 2, 4, 6, 12, 24, 36, 48, 60, 120, 180, 240, 360, 720, 840, 1_260, 1_680, 2_520, 5_040, 7_560, 10_080, 15_120]);
 }
