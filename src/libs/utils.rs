@@ -1,5 +1,6 @@
 //! General purpose utility functions.
 
+#![allow(warnings)]
 
 pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(_list: Vec<T>) -> Vec<T> {
     //! Find all the UNIQUE elements in a given vector of Datatype T*, where T has the following attributes:
@@ -18,4 +19,9 @@ pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(_list: V
         }
     }
     return unique_list;
+}
+
+pub fn clear_console(){
+    //! Clear the console before a new line is printed.
+    println!("{}[2J", 27 as char);
 }
