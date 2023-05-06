@@ -102,6 +102,27 @@ As this entire package is a cargo crate, you can generate the documentation usin
         }
         ```
 
+5. `find_anti_primes_till()`
+
+    - _Finds all anti-prime numbers which are less than or equal to the given number._
+    - __Arguments:__ `num: u64`
+    - __Returns:__ `Vec<u64>` which is the list of all anti-prime numbers less than or equal to the given number, `num`.
+    - __Usage:__
+
+        ```rs
+        use prime_checker;
+
+            fn main(){
+                let num: u64 = z; // z belongs to the set of natural numbers and is only used as a placeholder by us in this README.
+                let anti_prime_numbers: Vec<u64>;
+
+                anti_prime_numbers = prime_checker::find_anti_primes_till(num: num);
+                println!("The anti-prime numbers till {} are:\t{:?}", num, anti_prime_numbers);
+            }
+        ```
+
+    - __WARNING:__ _HIGHLY Unoptimized and Computationally Expensive_[^1].
+
 ## Development and Contribution
 
 If you want to contribute to this library, kindly follow the steps described below.
@@ -149,3 +170,5 @@ __DO NOT__ use the `nightly` build of Rust for this. We cannot vouch for any beh
 ## Credits
 
 (ɔ) 2023 [Arkiralor](https://www.github.com/Arkiralor) ([Prithoo Medhi](mailto:prithoo11335@gmail.com))
+
+[^1]: _Takes approximately 7 minutes to check 6'160 values beyond the last element of `prime_checker::libs::constants::KNOWN_ANTIPRIMES`._
