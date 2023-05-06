@@ -1,6 +1,6 @@
 [package]
 name = "prime-checker"
-version = "0.2.1"
+version = "0.2.12"
 edition = "2021"
 rust-version = "1.69.0"
 authors = [
