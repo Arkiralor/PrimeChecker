@@ -145,11 +145,11 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
     let start: u64 = constants::KNOWN_ANTIPRIMES[constants::KNOWN_ANTIPRIMES.len()-1] + 1;
 
     //// Debug code; comment out for prod.
-    let start_time = SystemTime::now();
+    // let start_time = SystemTime::now();
 
     for item in start..num+1{
         //// Debug code; comment out for prod.
-        println!("Checking if {} is an anti-prime number...", item);
+        println!("Checking if {} is an anti-prime number...{}% done", item, (item as f64/num as f64)*100.0);
         let (result, _factors) = check_if_anti_prime(item);
         if result == true{
             anti_primes.push(item);
@@ -157,9 +157,9 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
     }
 
     //// Debug code; comment out for prod.
-    let end_time = SystemTime::now();
-    let time_taken = end_time.duration_since(start_time).unwrap();
-    println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
+    // let end_time = SystemTime::now();
+    // let time_taken = end_time.duration_since(start_time).unwrap();
+    // println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
 
     // Remove duplicate elements from the vector and sort it.
     anti_primes = utils::unique_elements_vector(anti_primes);
