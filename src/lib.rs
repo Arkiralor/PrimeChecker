@@ -31,6 +31,14 @@ pub fn check_if_anti_prime(num:u64)->(bool, Vec<u64>){
     return (check,factors);
 }
 
+pub fn find_anti_primes_till(num: u64)->Vec<u64>{
+    //! Find all anti-prime numbers until a given value `num`.
+    //! * Arguments: `num: u64` - The number to check till.
+    //! * Returns: `Vec<u64>` - The list of all anti-prime numbers until that number.
+    let anti_primes: Vec<u64> = libs::primes::find_anti_primes_till(num);
+    return anti_primes;
+}
+
 pub fn find_primes_till(num:u64)->Vec<u64>{
     //! Finds all the prime numbers till a given number.
     //! * Arguments:    `num: u64` - The number to check till.

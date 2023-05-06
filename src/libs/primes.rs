@@ -1,5 +1,6 @@
 //! Functions/methods to check prime numbers.
 #![allow(warnings)]
+use std::time::{Duration, SystemTime};
 
 use crate::libs::constants;
 use crate::libs::utils;
@@ -113,6 +114,59 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
         return (false, factors);
     }
 
+}
+
+pub fn find_anti_primes_till(num: u64)->Vec<u64>{
+    //! Finds all the anti-prime numbers till a given number.
+    let mut anti_primes: Vec<u64> = Vec::new();
+    let knowns: [u64; constants::KNOWN_ANTIPRIMES.len()] = constants::KNOWN_ANTIPRIMES;
+
+    // If the given number is less than or equal to the last known anti-prime number, then add all numbers less than or equal to it to the return vector.
+    if num <= constants::KNOWN_ANTIPRIMES[constants::KNOWN_ANTIPRIMES.len()-1] {
+        for item in knowns{
+            if item <= num{
+                anti_primes.push(item);
+            }
+        }
+    }
+
+    // Else if the given number is greater than the last known anti-prime number, then add all known anti-prime numbers to the return vector.
+    else if num > constants::KNOWN_ANTIPRIMES[constants::KNOWN_ANTIPRIMES.len()-1] {
+        for item in knowns{
+            anti_primes.push(item);
+        }
+    }
+
+    else {
+        panic!("Something went wrong while checking for anti-primes.");
+    }
+
+    // Start checking for anti-prime numbers from the last known anti-prime number + 1.
+    let start: u64 = constants::KNOWN_ANTIPRIMES[constants::KNOWN_ANTIPRIMES.len()-1] + 1;
+
+    //// Debug code; comment out for prod.
+    let start_time = SystemTime::now();
+
+    for item in start..num+1{
+        //// Debug code; comment out for prod.
+        println!("Checking if {} is an anti-prime number...", item);
+        let (result, _factors) = check_if_anti_prime(item);
+        if result == true{
+            anti_primes.push(item);
+        }
+    }
+
+    //// Debug code; comment out for prod.
+    let end_time = SystemTime::now();
+    let time_taken = end_time.duration_since(start_time).unwrap();
+    println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
+
+    // Remove duplicate elements from the vector and sort it.
+    anti_primes = utils::unique_elements_vector(anti_primes);
+    anti_primes.sort();
+
+
+    return anti_primes;
 }
 
 pub fn find_primes_till(num:u64)->Vec<u64>{
