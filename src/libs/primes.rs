@@ -4,8 +4,8 @@ use std::collections::HashMap;
 use std::time::{Duration, SystemTime};
 
 use crate::libs::constants;
-use crate::libs::globals;
 use crate::libs::utils;
+use crate::libs::cache_map;
 
 fn count_factors(num: u64)->u64{
     let mut factors: u64 = 2; // All natural numbers except 1 are divisible by 1 and themselves.
@@ -114,18 +114,46 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
 
     let mut checked_values: HashMap<u64, u64> = HashMap::new();  // Hashmap so that we don't need to keep checking the same values over-and-over again. 
     for item in prev_start..num {
-        if !checked_values.contains_key(&item){
+        // Version 1
+        // n_previous_factors = count_factors(item);
+        // if n_previous_factors >= n_factors{
+        //     n_previous_highers = n_previous_highers + 1;
+        // }
+        // continue;
+
+        // Version 2
+        //     if !checked_values.contains_key(&item){
+        //         n_previous_factors = count_factors(item);
+
+        //         checked_values.insert(item, n_previous_factors);
+
+        //         if n_previous_factors >= n_factors{
+        //             n_previous_highers = n_previous_highers + 1;
+        //         }
+        //         continue;
+        //     }
+        //     else if checked_values.contains_key(&item){
+        //         n_previous_factors = checked_values[&item];
+        //         if n_previous_factors >= n_factors{
+        //             n_previous_highers = n_previous_highers + 1;
+        //         }
+        //         continue;
+        //     }
+        //     else {
+        //         continue;
+        //     }
+        // }
+
+        if cache_map::contains_key(&item) == false{
             n_previous_factors = count_factors(item);
-
-            checked_values.insert(item, n_previous_factors);
-
+            cache_map::insert(item, n_previous_factors);
             if n_previous_factors >= n_factors{
                 n_previous_highers = n_previous_highers + 1;
             }
             continue;
         }
-        else if checked_values.contains_key(&item){
-            n_previous_factors = checked_values[&item];
+        else if cache_map::contains_key(&item) == true{
+            n_previous_factors = cache_map::retrieve(&item);
             if n_previous_factors >= n_factors{
                 n_previous_highers = n_previous_highers + 1;
             }
@@ -177,8 +205,12 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
     let start: u64 = knowns[knowns.len()-1] + 1;
 
     //// Debug code; comment out for prod.
-    // let start_time = SystemTime::now();
+    let start_time = SystemTime::now();
 
+    // IMPORTANT: DO NOT REMOVE THIS LINE OF CODE.
+    // This line of code initializes the cache map before the anti-prime number check begins.
+    // This is done to prevent the cache map from growing too large and consuming too much memory.
+    cache_map::init(); // Initialize the cache map.
     for item in start..num+1{
         if known_primes.contains(&item) {
             continue;
@@ -195,10 +227,15 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
         }
     }
 
+    // IMPORTANT: DO NOT REMOVE THIS LINE OF CODE.
+    // This line of code clears the cache map after the anti-prime number check is complete.
+    // This is done to prevent the cache map from growing too large and consuming too much memory.
+    cache_map::clear(); // Clear the cache map.
+
     //// Debug code; comment out for prod.
-    // let end_time = SystemTime::now();
-    // let time_taken = end_time.duration_since(start_time).unwrap();
-    // println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
+    let end_time = SystemTime::now();
+    let time_taken = end_time.duration_since(start_time).unwrap();
+    println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
 
     // Remove duplicate elements from the vector and sort it.
     anti_primes = utils::unique_elements_vector(anti_primes);

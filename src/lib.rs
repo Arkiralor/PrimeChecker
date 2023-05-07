@@ -1,9 +1,6 @@
 #![allow(warnings)]
 //! Rust library crate to hold simple functions to check the prime-ness of a given unsigned, 64-bit integer.
 
-#[macro_use]
-extern crate lazy_static;
-
 mod libs;
 
 pub fn description(show:bool)->String{
