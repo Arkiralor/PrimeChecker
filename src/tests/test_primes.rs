@@ -90,12 +90,15 @@ pub fn test_find_anti_primes_till_2(){
     assert_eq!(anti_primes, vec![1,2,4,6,12]);
 }
 
-// prithoo: This test passes, but takes 7 minutes or so to run. So, it is ignored.
+// prithoo: This test passes, but takes 64 seconds or so to run. So, it is ignored.
+// if I let this run, pretty soon I will owe Github $1000 for exceeding the free tier.
+/// Uncomment the `#[ignore]` attribute to run this test __IN LOCAL TESTING ONLY__ !
+/// 
 #[ignore]
 #[test]
 pub fn test_find_anti_primes_till_3(){
-    //! Tests the find_anti_primes_till function with a non-anti-prime number, 16'240.
-    let num: u64 = 16_240;
+    //! Tests the find_anti_primes_till function with a non-anti-prime number, 16'540.
+    let num: u64 = 16_540;
     let anti_primes = primes::find_anti_primes_till(num);
     assert_eq!(anti_primes, vec![1, 2, 4, 6, 12, 24, 36, 48, 60, 120, 180, 240, 360, 720, 840, 1_260, 1_680, 2_520, 5_040, 7_560, 10_080, 15_120]);
 }

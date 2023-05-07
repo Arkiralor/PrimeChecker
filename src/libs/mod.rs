@@ -3,4 +3,4 @@
 pub mod primes;
 pub mod utils;
 pub mod constants;
-mod globals;
+pub mod cache_map;
