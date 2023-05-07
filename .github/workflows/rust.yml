@@ -20,6 +20,6 @@ jobs:
     - name: Build
       run: |
         chmod +x scripts/*
-        sh scripts/build.sh debug
+        sh scripts/build.sh both
     - name: Run tests
       run: cargo test --verbose

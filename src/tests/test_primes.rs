@@ -91,7 +91,7 @@ pub fn test_find_anti_primes_till_2(){
 }
 
 // prithoo: This test passes, but takes 7 minutes or so to run. So, it is ignored.
-#[ignore]
+// #[ignore]
 #[test]
 pub fn test_find_anti_primes_till_3(){
     //! Tests the find_anti_primes_till function with a non-anti-prime number, 16'240.

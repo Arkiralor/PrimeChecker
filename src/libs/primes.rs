@@ -4,6 +4,7 @@ use std::collections::HashMap;
 use std::time::{Duration, SystemTime};
 
 use crate::libs::constants;
+use crate::libs::globals;
 use crate::libs::utils;
 
 fn count_factors(num: u64)->u64{
@@ -110,12 +111,29 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
 
     // Loop to see if the number is just a composite number or an anti-prime number.
     // An anti-prime number is defined as a number which has more factors than any natural number lesser than itself.
+
+    let mut checked_values: HashMap<u64, u64> = HashMap::new();  // Hashmap so that we don't need to keep checking the same values over-and-over again. 
     for item in prev_start..num {
-        n_previous_factors = count_factors(item);
-        if n_previous_factors >= n_factors{
-            n_previous_highers = n_previous_highers + 1;
+        if !checked_values.contains_key(&item){
+            n_previous_factors = count_factors(item);
+
+            checked_values.insert(item, n_previous_factors);
+
+            if n_previous_factors >= n_factors{
+                n_previous_highers = n_previous_highers + 1;
+            }
+            continue;
         }
-        continue;
+        else if checked_values.contains_key(&item){
+            n_previous_factors = checked_values[&item];
+            if n_previous_factors >= n_factors{
+                n_previous_highers = n_previous_highers + 1;
+            }
+            continue;
+        }
+        else {
+            continue;
+        }
     }
     
     if n_previous_highers == 0{
