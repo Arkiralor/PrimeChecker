@@ -175,4 +175,4 @@ __DO NOT__ use the `nightly` build of Rust for this. We cannot vouch for any beh
 
 (ɔ) 2023 [Arkiralor](https://www.github.com/Arkiralor) ([Prithoo Medhi](mailto:prithoo11335@gmail.com))
 
-[^1]: _Takes approximately 7 minutes to check 6'160 values beyond the last element of `prime_checker::libs::constants::KNOWN_ANTIPRIMES`._
+[^1]: _Takes approximately 64 seconds to check 6'160 values beyond the last element of `prime_checker::libs::constants::KNOWN_ANTIPRIMES`._
