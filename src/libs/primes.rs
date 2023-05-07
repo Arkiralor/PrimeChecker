@@ -191,49 +191,11 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
 }
 
 pub fn find_primes_till(num:u64)->Vec<u64>{
-    //! ## __DEPRECATED__
-    //!
-    //! Finds all the prime numbers till a given number.
-    //! 
-    //! _Redirects to current version._
-    // Redirection Block Start.
-    let results = find_primes_till_v2(num);
-    return results;
-    // Redirection Block End.
-    // The code below this line will not get executed.
-
-    let mut prime_numbers: Vec<u64> = Vec::new();
-    for item in constants::KNOWN_PRIMES {
-        if item <= num {
-            prime_numbers.push(item);
-        }
-    }
-    //// Debugging code; comment out for prod.
-    // println!("{:?} are commonly known prime numbers; skipping checking them individually...", prime_numbers);
-
-    let start: u64 = 3;
-
-    let mut result: bool;
-    let mut _factors: Vec<u64> = Vec::new();
-
-    for item in start..num + 1 {
-        (result, _factors) = check_if_prime(item);
-
-        if result == true {
-            prime_numbers.push(item);
-        }
-    }
-    prime_numbers = utils::unique_elements_vector(prime_numbers);
-    prime_numbers.sort();
-    return prime_numbers;
-    
-}
-
-pub fn find_primes_till_v2(num:u64)->Vec<u64>{
     //! # __CURRENT VERSION__
     //! Find all prime numbers using a sieve.
 
     let mut j:u64; // Inner-loop counter for the seive.
+    let knowns = constants::KNOWN_PRIMES; // What am I supposed to do with this?
 
     // Pre-declaration of Hashmap
     let mut checked_primes: HashMap<u64, bool> = HashMap::new();
@@ -257,7 +219,7 @@ pub fn find_primes_till_v2(num:u64)->Vec<u64>{
             results.push(*key);
         }
     }
-    results.push(1);
+
     results = utils::unique_elements_vector(results);
     results.sort();
     return results;
