@@ -1,10 +1,11 @@
 name: Rust
 
 on:
-  # push:
-  #   branches: [ "master" ]
+  ## prithoo: We need this script to run just before we push to the `package` branch
+  push:
+    branches: [ "package" ]
   pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "package" ]
 
 env:
   CARGO_TERM_COLOR: always
