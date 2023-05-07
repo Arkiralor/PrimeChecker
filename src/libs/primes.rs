@@ -197,7 +197,7 @@ pub fn find_primes_till(num:u64)->Vec<u64>{
     //! 
     //! _Redirects to current version._
     // Redirection Block Start.
-    let results = find_primes_til_v2(num);
+    let results = find_primes_till_v2(num);
     return results;
     // Redirection Block End.
     // The code below this line will not get executed.
@@ -229,7 +229,7 @@ pub fn find_primes_till(num:u64)->Vec<u64>{
     
 }
 
-pub fn find_primes_til_v2(num:u64)->Vec<u64>{
+pub fn find_primes_till_v2(num:u64)->Vec<u64>{
     //! # __CURRENT VERSION__
     //! Find all prime numbers using a sieve.
 
