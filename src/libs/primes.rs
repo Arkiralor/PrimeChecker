@@ -1,5 +1,6 @@
 //! Functions/methods to check prime numbers.
 #![allow(warnings)]
+use std::collections::HashMap;
 use std::time::{Duration, SystemTime};
 
 use crate::libs::constants;
@@ -190,7 +191,16 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
 }
 
 pub fn find_primes_till(num:u64)->Vec<u64>{
+    //! ## __DEPRECATED__
+    //!
     //! Finds all the prime numbers till a given number.
+    //! 
+    //! _Redirects to current version._
+    // Redirection Block Start.
+    let results = find_primes_til_v2(num);
+    return results;
+    // Redirection Block End.
+    // The code below this line will not get executed.
 
     let mut prime_numbers: Vec<u64> = Vec::new();
     for item in constants::KNOWN_PRIMES {
@@ -216,4 +226,39 @@ pub fn find_primes_till(num:u64)->Vec<u64>{
     prime_numbers = utils::unique_elements_vector(prime_numbers);
     prime_numbers.sort();
     return prime_numbers;
+    
+}
+
+pub fn find_primes_til_v2(num:u64)->Vec<u64>{
+    //! # __CURRENT VERSION__
+    //! Find all prime numbers using a sieve.
+
+    let mut j:u64; // Inner-loop counter for the seive.
+
+    // Pre-declaration of Hashmap
+    let mut checked_primes: HashMap<u64, bool> = HashMap::new();
+    for i in 2..num+1{
+        checked_primes.insert(i, true);
+    }
+
+    for i in 2..num+1{
+        if (checked_primes[&i] == true){
+            j = i*2;
+            while (j <= num){
+                checked_primes.insert(j, false);
+                j = j+i;
+            }
+        }
+    }
+    
+    let mut results: Vec<u64> = Vec::new();
+    for (key, value) in &checked_primes{
+        if value == &true{
+            results.push(*key);
+        }
+    }
+    results.push(1);
+    results = utils::unique_elements_vector(results);
+    results.sort();
+    return results;
 }
