@@ -85,6 +85,8 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
 
 pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
     //! Checks to see if a given number is an anti-prime number.
+    
+    // This is the only function that currently requires a global variable or cache for its performance to be acceptable.
 
     let mut prime_check: bool=false; // Status check of the given number if it's a prime.
     let mut factors: Vec<u64> = Vec::new(); // Factors of the given number.
@@ -114,36 +116,6 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
 
     let mut checked_values: HashMap<u64, u64> = HashMap::new();  // Hashmap so that we don't need to keep checking the same values over-and-over again. 
     for item in prev_start..num {
-        // Version 1
-        // n_previous_factors = count_factors(item);
-        // if n_previous_factors >= n_factors{
-        //     n_previous_highers = n_previous_highers + 1;
-        // }
-        // continue;
-
-        // Version 2
-        //     if !checked_values.contains_key(&item){
-        //         n_previous_factors = count_factors(item);
-
-        //         checked_values.insert(item, n_previous_factors);
-
-        //         if n_previous_factors >= n_factors{
-        //             n_previous_highers = n_previous_highers + 1;
-        //         }
-        //         continue;
-        //     }
-        //     else if checked_values.contains_key(&item){
-        //         n_previous_factors = checked_values[&item];
-        //         if n_previous_factors >= n_factors{
-        //             n_previous_highers = n_previous_highers + 1;
-        //         }
-        //         continue;
-        //     }
-        //     else {
-        //         continue;
-        //     }
-        // }
-
         if cache_map::contains_key(&item) == false{
             n_previous_factors = count_factors(item);
             cache_map::insert(item, n_previous_factors);
@@ -204,8 +176,8 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
     // Start checking for anti-prime numbers from the last known anti-prime number + 1.
     let start: u64 = knowns[knowns.len()-1] + 1;
 
-    //// Debug code; comment out for prod.
-    let start_time = SystemTime::now();
+    //// Benchmarking code; comment out for prod.
+    // let start_time = SystemTime::now();
 
     // IMPORTANT: DO NOT REMOVE THIS LINE OF CODE.
     // This line of code initializes the cache map before the anti-prime number check begins.
@@ -217,7 +189,7 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
         }
 
         //// Debug code; comment out for prod.
-        println!("Checking {}.........{}% done", item, ((item as f32/num as f32)*100.0) as u64);
+        // println!("Checking {}.........{}% done", item, ((item as f32/num as f32)*100.0) as u64);
         (result, _) = check_if_anti_prime(item);
         if result == true{
             anti_primes.push(item);
@@ -232,10 +204,10 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
     // This is done to prevent the cache map from growing too large and consuming too much memory.
     cache_map::clear(); // Clear the cache map.
 
-    //// Debug code; comment out for prod.
-    let end_time = SystemTime::now();
-    let time_taken = end_time.duration_since(start_time).unwrap();
-    println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
+    //// Benchmarking code; comment out for prod.
+    // let end_time = SystemTime::now();
+    // let time_taken = end_time.duration_since(start_time).unwrap();
+    // println!("Time taken to check for anti-primes: {} seconds.", time_taken.as_secs());
 
     // Remove duplicate elements from the vector and sort it.
     anti_primes = utils::unique_elements_vector(anti_primes);

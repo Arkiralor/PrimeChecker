@@ -91,6 +91,9 @@ pub fn test_find_anti_primes_till_2(){
 }
 
 // prithoo: This test passes, but takes 64 seconds or so to run. So, it is ignored.
+// if I let this run, pretty soon I will owe Github $1000 for exceeding the free tier.
+/// Uncomment the `#[ignore]` attribute to run this test __IN LOCAL TESTING ONLY__ !
+/// 
 #[ignore]
 #[test]
 pub fn test_find_anti_primes_till_3(){
