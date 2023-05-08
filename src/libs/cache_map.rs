@@ -1,5 +1,5 @@
 //! This module holds a global hashtable that is used to cache the values of the factors of a number.
-//! 
+//!
 //! It is used to reduce the processing time for finding anti-prime numbers until `n` by upto 86.26%.
 
 use std::collections::HashMap;
@@ -93,7 +93,7 @@ pub fn get_size() -> usize {
 
 /// Function to clear the hashtable, should it get too large.
 pub fn clean() {
-    if get_size() > MAX_TABLE_SIZE{
+    if get_size() > MAX_TABLE_SIZE {
         clear();
     }
 }
