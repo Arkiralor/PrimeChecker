@@ -2,6 +2,8 @@
 
 #![allow(warnings)]
 
+use std::process::{Command, Stdio};
+
 pub fn unique_elements_vector<T: std::fmt::Debug + std::cmp::PartialEq>(_list: Vec<T>) -> Vec<T> {
     //! Find all the UNIQUE elements in a given vector of Datatype T*, where T has the following attributes:
     //!* Debug()
