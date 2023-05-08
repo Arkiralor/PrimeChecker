@@ -5,6 +5,9 @@
 use std::collections::HashMap;
 use std::sync::{Arc, RwLock};
 
+// Max permissible size of the hashtable.
+const MAX_TABLE_SIZE: usize = 100_000_000 as usize;
+
 /// This is a global hashtable that holds the values of the factors of a number.
 ///
 /// __Example:__ `CHECKED_VALUES_FACTORS[10] = 4` means that the number `10` has `4` factors.
@@ -81,3 +84,16 @@ pub fn clear() {
     hashtable.clear();
 }
 
+/// Function to get the size of the hashtable
+pub fn get_size() -> usize {
+    let hashtable = GLOBAL_HASHTABLE.read().unwrap();
+    let _size: usize = hashtable.len();
+    return _size;
+}
+
+/// Function to clear the hashtable, should it get too large.
+pub fn clean() {
+    if get_size() > MAX_TABLE_SIZE{
+        clear();
+    }
+}

@@ -135,6 +135,9 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
             continue;
         }
     }
+
+    // In case this-> fn was called independently without the find_anti_primes_till() fn being available to clear the hashtable.
+    cache_map::clean(); // Cleans the global hashtable if it gets too large.
     
     if n_previous_highers == 0{
         return (true, factors);
@@ -189,8 +192,7 @@ pub fn find_anti_primes_till(num: u64)->Vec<u64>{
         }
 
         //// Debug code; comment out for prod.
-        utils::clear_console();
-        println!("Checking {}.........{}% done", item, ((item as f32/num as f32)*100.0) as u64);
+        // println!("Checking {}.........{}% done", item, ((item as f32/num as f32)*100.0) as u64);
         (result, _) = check_if_anti_prime(item);
         if result == true{
             anti_primes.push(item);
