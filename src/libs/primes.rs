@@ -113,8 +113,6 @@ pub fn check_if_anti_prime(num: u64)->(bool, Vec<u64>){
 
     // Loop to see if the number is just a composite number or an anti-prime number.
     // An anti-prime number is defined as a number which has more factors than any natural number lesser than itself.
-
-    // let mut checked_values: HashMap<u64, u64> = HashMap::new();  // Hashmap so that we don't need to keep checking the same values over-and-over again. 
     for item in prev_start..num {
         if cache_map::contains_key(&item) == false{
             n_previous_factors = count_factors(item);
