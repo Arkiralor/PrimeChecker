@@ -15,11 +15,8 @@ fn count_factors(num: u64) -> u64 {
     } else if num == 1 {
         // Static known case: 1 has the factor: [1]
         return 1;
-    } else if num == 2 {
-        // Static known case: 2 has factors: [1, 2]
-        return 2;
-    } else if num == 3 {
-        // Static known case: 3 has factors: [1, 3]
+    } else if (num == 2) || (num == 3) {
+        // Static known case: 2 has factors: [1, 2] and 3 has two factors: [1,3]
         return 2;
     } else if num > 3 {
         while divisor < ((num / 2) + 1) as u64 {

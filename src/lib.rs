@@ -21,7 +21,7 @@ pub fn description(show: bool) -> String {
     return description_str;
 }
 
-pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
+pub fn is_prime(num: u64) -> (bool, Vec<u64>) {
     //! Checks to see if a given number is a prime number.
     //!
     //! __Arguments:__
@@ -36,7 +36,7 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
     //! __Example:__
     //!
     //! ```rust
-    //! let (check,factors) = prime_checker::check_if_prime(7);
+    //! let (check,factors) = prime_checker::is_prime(7);
     //!
     //! assert_eq!(factors, vec![1, 7]);
     //! assert_eq!(check, true);
@@ -46,8 +46,8 @@ pub fn check_if_prime(num: u64) -> (bool, Vec<u64>) {
     return (check, factors);
 }
 
-pub fn check_if_anti_prime(num: u64) -> (bool, Vec<u64>) {
-    //! Checks to see if a given number is an anti-prime number.
+pub fn is_hcn(num: u64) -> (bool, Vec<u64>) {
+    //! Checks to see if a given number is a highly-composite (anti-prime) number.
     //!
     //! __Arguments:__
     //!
@@ -61,7 +61,7 @@ pub fn check_if_anti_prime(num: u64) -> (bool, Vec<u64>) {
     //! __Example:__
     //!
     //! ```rust
-    //! let (check,factors) = prime_checker::check_if_anti_prime(12);
+    //! let (check,factors) = prime_checker::is_hcn(12);
     //!
     //! assert_eq!(factors, vec![1, 2, 3, 4, 6, 12]);
     //! assert_eq!(check, true);
@@ -71,8 +71,8 @@ pub fn check_if_anti_prime(num: u64) -> (bool, Vec<u64>) {
     return (check, factors);
 }
 
-pub fn find_anti_primes_till(num: u64) -> Vec<u64> {
-    //! Find all anti-prime numbers until a given value `num`.
+pub fn get_hcn(num: u64) -> Vec<u64> {
+    //! Find all highly composite numbers until a given value `num`.
     //!
     //! __WARNING:__ Computationally Expensive [^1]
     //!
@@ -87,7 +87,7 @@ pub fn find_anti_primes_till(num: u64) -> Vec<u64> {
     //! __Example:__
     //!
     //! ```rust
-    //! let anti_primes: Vec<u64> = prime_checker::find_anti_primes_till(100);
+    //! let anti_primes: Vec<u64> = prime_checker::get_hcn(100);
     //!
     //! assert_eq!(anti_primes, vec![1, 2, 4, 6, 12, 24, 36, 48, 60]);
     //! ```
@@ -97,7 +97,7 @@ pub fn find_anti_primes_till(num: u64) -> Vec<u64> {
     return anti_primes;
 }
 
-pub fn find_primes_till(num: u64) -> Vec<u64> {
+pub fn get_primes(num: u64) -> Vec<u64> {
     //! Finds all the prime numbers till a given number.
     //!
     //! __Arguments:__
@@ -111,7 +111,7 @@ pub fn find_primes_till(num: u64) -> Vec<u64> {
     //! __Example:__
     //!
     //! ```rust
-    //! let prime_numbers = prime_checker::find_primes_till(12);
+    //! let prime_numbers = prime_checker::get_primes(12);
     //!
     //! assert_eq!(prime_numbers, vec![2, 3, 5, 7, 11]);
     //! ```

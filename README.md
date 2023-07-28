@@ -22,9 +22,9 @@ _It may take a few hours for docs to propagate after a new version has been uplo
 
 Here we will go over the very basics of the functions defined in the `lib.rs` file.
 
-1. `check_if_anti_prime()`
+1. `is_hcn()`
   
-    - _Checks if the given number is an anti-prime number._
+    - _Checks if the given number is a highly-composite (anti-prime) number._
     - __Arguments:__ `num: u64`
     - __Returns:__ `bool | default: false`, `Vec<u64>` where the `vector` is list of the given number, `num`'s factors.
     - __Usage:__
@@ -37,17 +37,17 @@ Here we will go over the very basics of the functions defined in the `lib.rs` fi
             let check: bool;
             let factors: Vec<u64>;
 
-            (check, factors) = prime_checker::check_if_anti_prime(num: num);
+            (check, factors) = prime_checker::is_hcn(num: num);
             if check == true{
-                println!("{} is an anti-prime number.", num);
+                println!("{} is a highly composite number.", num);
             }
             else {
-                println!("{} is not an anti-prime number; here are its factors: {:?}", num, factors);
+                println!("{} is not a highly composite number; here are its factors: {:?}", num, factors);
             }
         }
         ```
 
-2. `check_if_prime()`
+2. `is_prime()`
 
     - _Checks if the given number is a prime number._
     - __Arguments:__ `num: u64`
@@ -62,7 +62,7 @@ Here we will go over the very basics of the functions defined in the `lib.rs` fi
             let check: bool;
             let factors: Vec<u64>;
 
-            (check, factors) = prime_checker::check_if_prime(num: num);
+            (check, factors) = prime_checker::is_prime(num: num);
             if check == true{
                 println!("{} is a prime number.", num);
             }
@@ -87,7 +87,7 @@ Here we will go over the very basics of the functions defined in the `lib.rs` fi
         }
         ```
 
-4. `find_primes_till()`
+4. `get_primes()`
 
     - _Finds all prime numbers which are less than or equal to the given number._
     - __Arguments:__ `num: u64`
@@ -101,16 +101,16 @@ Here we will go over the very basics of the functions defined in the `lib.rs` fi
             let num: u64 = z; // z belongs to the set of natural numbers and is only used as a placeholder by us in this README.
             let prime_numbers: Vec<u64>;
 
-            prime_numbers = prime_checker::find_primes_till(num: num);
+            prime_numbers = prime_checker::get_primes(num: num);
             println!("The prime numbers till {} are:\t{:?}", num, prime_numbers);
         }
         ```
 
-5. `find_anti_primes_till()`
+5. `get_hcn()`
 
     - _Finds all anti-prime numbers which are less than or equal to the given number._
     - __Arguments:__ `num: u64`
-    - __Returns:__ `Vec<u64>` which is the list of all anti-prime numbers less than or equal to the given number, `num`.
+    - __Returns:__ `Vec<u64>` which is the list of all highly-composite numbers less than or equal to the given number, `num`.
     - __Usage:__
 
         ```rs
@@ -120,7 +120,7 @@ Here we will go over the very basics of the functions defined in the `lib.rs` fi
                 let num: u64 = z; // z belongs to the set of natural numbers and is only used as a placeholder by us in this README.
                 let anti_prime_numbers: Vec<u64>;
 
-                anti_prime_numbers = prime_checker::find_anti_primes_till(num: num);
+                anti_prime_numbers = prime_checker::get_hcn(num: num);
                 println!("The anti-prime numbers till {} are:\t{:?}", num, anti_prime_numbers);
             }
         ```
